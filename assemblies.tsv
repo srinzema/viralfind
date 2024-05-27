@@ -1,0 +1,254 @@
+name	provider	accession	tax_id	annotation	species	other_info
+ViralProj15505	NCBI	GCF_000863945.3	337041	True	Human papillomavirus 16	National Center for Biotechnology Information, NIH
+ASM317737v1	NCBI	GCA_003177375.1	337044	True	Human papillomavirus 69	Toshihiko Matsukura, National Institute of Infectious Dieseases, Department of Virology II; 1-23-1 Toyama, Shinjuku, Tokyo 162-8640, Japan
+ASM317795v1	NCBI	GCA_003177955.1	931244	True	Human papillomavirus 106	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317823v1	NCBI	GCA_003178235.1	333924	True	Human papillomavirus 111	Department of Medical Microbiology, Lunds University, Institution of Laboratory Medicine
+ASM317861v1	NCBI	GCA_003178615.1	337039	True	Human papillomavirus 117	Klinik fur Dermatologie, Venerologie und Allergologie, Hauttumorcentrum Charite
+ASM317863v1	NCBI	GCA_003178635.1	337051	True	Human papillomavirus 118	Klinik fur Dermatologie, Venerologie und Allergologie, Hauttumorcentrum Charite
+ASM317881v1	NCBI	GCA_003178815.1	1175852	True	Human papillomavirus 130	Clinic for Dermatology, Venerology und Allergology, Haut Tumor Centrum Charite (HTCC), Charite - Universitaetsmedizin Berlin
+ASM317897v1	NCBI	GCA_003178975.1	1175852	True	Human papillomavirus 142	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317919v1	NCBI	GCA_003179195.1	1175849	True	Human papillomavirus 155	Dept of Laboratory Medicine, Lund University
+ASM317941v1	NCBI	GCA_003179415.1	1513264	True	Human papillomavirus 162	Genetic Department, Peking University Cancer Hospital & Institute
+ASM317951v1	NCBI	GCA_003179515.1	337039	True	Human papillomavirus type XS2	University of Cologne, Institute of Virology
+ASM317961v1	NCBI	GCA_003179615.1	1513257	True	Human papillomavirus 199	Institute of Microbiology and Immunology, Faculty of Medicine, University of Ljubljana
+ASM317971v1	NCBI	GCA_003179715.1	1513256	True	Human papillomavirus 202	Laboratory Medicine, Karolinska Institutet
+ASM317981v1	NCBI	GCA_003179815.1	1513257	True	Human papillomavirus 157	Human Virology Group, Institute of Molecular and Cellular Biology CONICET
+ASM317983v1	NCBI	GCA_003179835.1	333926	True	Human papillomavirus 205	Human Virology Group, Institute of Molecular and Cellular Biology CONICET
+ASM318005v1	NCBI	GCA_003180055.1	337042	True	Human papillomavirus 39	na
+ASM318019v1	NCBI	GCA_003180195.1	337051	True	Human papillomavirus 21	Andrew D. Farmer, HIV Sequence Database, Los Alamos National Labroatory, T-10, Mail Stop K710, Los Alamos, NM 87501, USA
+ASM318031v1	NCBI	GCA_003180315.1	337051	True	Human papillomavirus 36	Andrew D. Farmer, HIV Sequence Database, Los Alamos National Labroatory, T-10, Mail Stop K710, Los Alamos, NM 87501, USA
+ASM318059v1	NCBI	GCA_003180595.1	333924	True	Human papillomavirus 15	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ASM318069v1	NCBI	GCA_003180695.1	337041	True	Human papillomavirus type 35H	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ASM318079v1	NCBI	GCA_003180795.1	337042	True	Human papillomavirus 59	J. Choe, C/O Hajo Delius, DKFZ - Abt. ATV, Im Neuenheimer Feld 506, 69120 Heidelberg, FRG
+ASM317751v1	NCBI	GCA_003177515.1	333767	True	Human papillomavirus 83	Medicine, Indiana University School of Medicine
+ASM317791v1	NCBI	GCA_003177915.1	337042	True	Human papillomavirus type 68a	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317853v1	NCBI	GCA_003178535.1	333924	True	Human papillomavirus 151	Kovanda A., Laboratory for Molecular Microbiology, Institute of Microbiology and Immunology, Zaloska 4, Ljubljana, 1000 Ljubljana, SLOVENIA
+ASM317869v1	NCBI	GCA_003178695.1	333924	True	Human papillomavirus 122	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317887v1	NCBI	GCA_003178875.1	333924	True	Human papillomavirus 159	Kocjan B.J., Faculty of Medicine, University of, Ljubljana, Institute of Microbiology and, Zaloska 4, Ljubljana, 1000, SLOVENIA
+ASM317891v1	NCBI	GCA_003178915.1	1175849	True	Human papillomavirus 138	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317901v1	NCBI	GCA_003179015.1	333924	True	Human papillomavirus 145	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317903v1	NCBI	GCA_003179035.1	1513260	True	Human papillomavirus 146	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317937v1	NCBI	GCA_003179375.1	1513256	True	Human papillomavirus 169	Genetic Department, Peking University Cancer Hospital & Institute
+ASM317957v1	NCBI	GCA_003179575.1	1513256	True	Human papillomavirus 171	Pathology, University of Washington
+ASM317997v1	NCBI	GCA_003179975.1	337051	False	Human papillomavirus type 8	na
+ASM318023v1	NCBI	GCA_003180235.1	333924	True	Human papillomavirus 23	Andrew D. Farmer, HIV Sequence Database, Los Alamos National Labroatory, T-10, Mail Stop K710, Los Alamos, NM 87501, USA
+ASM318035v1	NCBI	GCA_003180355.1	333924	True	Human papillomavirus 38	Andrew D. Farmer, HIV Sequence Database, Los Alamos National Labroatory, T-10, Mail Stop K710, Los Alamos, NM 87501, USA
+ASM318037v1	NCBI	GCA_003180375.1	333754	True	Human papillomavirus 44	Andrew D. Farmer, HIV Sequence Database, Los Alamos National Labroatory, T-10, Mail Stop K710, Los Alamos, NM 87501, USA
+ASM318053v1	NCBI	GCA_003180535.1	337039	True	Human papillomavirus 3	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ASM318055v1	NCBI	GCA_003180555.1	337051	True	Human papillomavirus 12	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ASM318063v1	NCBI	GCA_003180635.1	337051	True	Human papillomavirus 19	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ASM318065v1	NCBI	GCA_003180655.1	337051	True	Human papillomavirus 25	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ASM318075v1	NCBI	GCA_003180755.1	337041	True	Human papillomavirus 52	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ASM317773v1	NCBI	GCA_003177735.1	333926	True	Human papillomavirus 95	de Villiers E.M., Div. Characterization of Tumorviruses, Deutsches Krebsforschungszentrum, Im Neuenheimer Feld 242, Heidelberg, 69120, GERMANY
+ASM317793v1	NCBI	GCA_003177935.1	337042	True	Human papillomavirus 97	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317821v1	NCBI	GCA_003178215.1	333924	True	Human papillomavirus 110	Department of Medical Microbiology, Lunds University, Institution of Laboratory Medicine
+ASM317873v1	NCBI	GCA_003178735.1	337051	True	Human papillomavirus 124	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317879v1	NCBI	GCA_003178795.1	1175849	True	Human papillomavirus 149	Clinic for Dermatology, Venerology und Allergology, Haut Tumor Centrum Charite (HTCC), Charite - Universitaetsmedizin Berlin
+ASM317889v1	NCBI	GCA_003178895.1	333924	True	Human papillomavirus 174	Kocjan B.J., Faculty of Medicine, University of Ljubljana, Institute of Microbiology and Immunology, Zaloska 4, Ljubljana, 1000, SLOVENIA
+ASM317893v1	NCBI	GCA_003178935.1	1175849	True	Human papillomavirus 139	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317895v1	NCBI	GCA_003178955.1	1513256	True	Human papillomavirus 141	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317905v1	NCBI	GCA_003179055.1	1175850	True	Human papillomavirus 147	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317915v1	NCBI	GCA_003179155.1	337051	True	Human papillomavirus 152	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317939v1	NCBI	GCA_003179395.1	1175850	True	Human papillomavirus 164	Genetic Department, Peking University Cancer Hospital & Institute
+ASM317949v1	NCBI	GCA_003179495.1	1175852	True	Human papillomavirus 180	Department of Laboratory Medicine, Lund University
+ASM317959v1	NCBI	GCA_003179595.1	333926	True	Human papillomavirus 173	Pathology, University of Washington
+ASM317969v1	NCBI	GCA_003179695.1	333928	True	Human papillomavirus 200	Laboratory Medicine, Karolinska Institutet
+ASM317999v1	NCBI	GCA_003179995.1	333754	True	Human papillomavirus 11	na
+ASM318015v1	NCBI	GCA_003180155.1	337042	True	Human papillomavirus type 70	Ola Forslund, Clinical Virology, Medical Microbiology, Malmoe University Hospital, Ing. 78 MAS, Malmoe, S-205 02, Sweden
+ASM318017v1	NCBI	GCA_003180175.1	337051	True	Human papillomavirus 20	Andrew D. Farmer, HIV Sequence Database, Los Alamos National Labroatory, T-10, Mail Stop K710, Los Alamos, NM 87501, USA
+ASM318027v1	NCBI	GCA_003180275.1	337039	True	Human papillomavirus 28	Andrew D. Farmer, HIV Sequence Database, Los Alamos National Labroatory, T-10, Mail Stop K710, Los Alamos, NM 87501, USA
+ASM318029v1	NCBI	GCA_003180295.1	337039	True	Human papillomavirus 29	Andrew D. Farmer, HIV Sequence Database, Los Alamos National Labroatory, T-10, Mail Stop K710, Los Alamos, NM 87501, USA
+ASM318039v1	NCBI	GCA_003180395.1	337050	True	Human papillomavirus 66	Andrew D. Farmer, HIV Sequence Database, Los Alamos National Labroatory, T-10, Mail Stop K710, Los Alamos, NM 87501, USA
+ASM318057v1	NCBI	GCA_003180575.1	337051	True	Human papillomavirus type 14D	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ASM318067v1	NCBI	GCA_003180675.1	337043	True	Human papillomavirus 27	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ASM318077v1	NCBI	GCA_003180775.1	337050	True	Human papillomavirus 56	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ASM317739v1	NCBI	GCA_003177395.1	337044	True	Human papillomavirus 82	Tetsutaro Sata, National Institute of Infectious Diseases, Department of Pathology; 1-23-1 Toyama, Shinjuku-ku, Tokyo 162-8640, Japan
+ASM317747v1	NCBI	GCA_003177475.1	337039	True	Human papillomavirus 160	Contact:Tohru Kiyono National Cancer Center Research Institute, Division of Virology; 5-1-1 Tsukiji, Chuo-ku, Tokyo 104-0045, Japan
+ASM317797v1	NCBI	GCA_003177975.1	333767	True	Human papillomavirus 102	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317851v1	NCBI	GCA_003178515.1	334209	True	Human papillomavirus 150	Kovanda A., HIV LAB, Institute of Microbiology and Immunology, Zaloska 4, 1000 Ljubljana, SLOVENIA
+ASM317867v1	NCBI	GCA_003178675.1	333924	True	Human papillomavirus 120	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317883v1	NCBI	GCA_003178835.1	1175852	True	Human papillomavirus 133	Clinic for Dermatology, Venerology und Allergology, Haut Tumor Centrum Charite (HTCC), Charite - Universitaetsmedizin Berlin
+ASM317899v1	NCBI	GCA_003178995.1	337051	True	Human papillomavirus 143	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317909v1	NCBI	GCA_003179095.1	337041	True	Human papillomavirus 31	na
+ASM317921v1	NCBI	GCA_003179215.1	1513258	True	Human papillomavirus 153	Clinical Microbiology, Laboratory Medicine Malmoe, Lund University
+ASM317943v1	NCBI	GCA_003179435.1	1175849	True	Human papillomavirus 170	Genetic Department, Peking University Cancer Hospital & Institute
+ASM317945v1	NCBI	GCA_003179455.1	1513257	True	Human papillomavirus 165	Genetic Department, Peking University Cancer Hospital & Institute
+ASM317955v1	NCBI	GCA_003179555.1	1175850	True	Human papillomavirus 168	Genetic Department, Peking University Cancer Hospital & Institute
+ASM317963v1	NCBI	GCA_003179635.1	1961681	True	Human papillomavirus 197	Laboratory Medicine, Karolinska Institutet
+ASM317985v1	NCBI	GCA_003179855.1	1513257	True	Human papillomavirus 158	Human Virology Group, Institute of Molecular and Cellular Biology CONICET
+ASM317995v1	NCBI	GCA_003179955.1	337041	True	Human papillomavirus 33	na
+ASM318007v1	NCBI	GCA_003180075.1	337044	False	Human papillomavirus 51	na
+ASM318021v1	NCBI	GCA_003180215.1	333924	True	Human papillomavirus 22	Andrew D. Farmer, HIV Sequence Database, Los Alamos National Labroatory, T-10, Mail Stop K710, Los Alamos, NM 87501, USA
+ASM318033v1	NCBI	GCA_003180335.1	333924	True	Human papillomavirus 37	Andrew D. Farmer, HIV Sequence Database, Los Alamos National Labroatory, T-10, Mail Stop K710, Los Alamos, NM 87501, USA
+ASM318047v1	NCBI	GCA_003180475.1	333754	True	Human papillomavirus 13	G. Opdenakker Mm, Rega Institute for Medical Research, Minderbroedersstraat 10, B 3000 Leuven, BELGIUM
+ASM318061v1	NCBI	GCA_003180615.1	333924	True	Human papillomavirus 17	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ASM318071v1	NCBI	GCA_003180715.1	333757	True	Human papillomavirus 40	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ASM318073v1	NCBI	GCA_003180735.1	337042	True	Human papillomavirus 45	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ViralProj15455	NCBI	GCF_000862825.1	334207	True	Human papillomavirus type 49	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ViralProj15456	NCBI	GCF_000863685.1	333924	True	Human papillomavirus 9	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ViralProj15509	NCBI	GCF_000863965.1	337049	True	Human papillomavirus type 34	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ViralProj15466	NCBI	GCF_000864725.1	333766	True	Human papillomavirus type 54	Andrew Farmer, Los Alamos National Laboratory, HIV Sequence Database, T-10, Mail Stop K710, Los Alamos, NM 87501 USA
+ViralProj15504	NCBI	GCF_000864905.1	337039	True	Human papillomavirus 10	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ViralProj15510	NCBI	GCF_000865685.1	337050	True	Human papillomavirus type 53	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ViralProj15511	NCBI	GCF_000866505.1	337051	True	Human papillomavirus 5	NCBI
+ViralProj62179	NCBI	GCF_000888015.1	1513257	True	Human papillomavirus 132	Clinic for Dermatology, Venerology und Allergology, Haut Tumor Centrum Charite (HTCC), Charite - Universitaetsmedizin Berlin
+ViralProj62175	NCBI	GCF_000891495.1	1175851	True	Human papillomavirus 129	Clinic for Dermatology, Venerology und Allergology, Haut Tumor Centrum Charite (HTCC), Charite - Universitaetsmedizin Berlin
+ViralProj14028	NCBI	GCF_000838505.1	333930	True	Human papillomavirus type 60	Andrew D. Farmer, HIV Sequence Database, Los Alamos National Labroatory, T-10, Mail Stop K710, Los Alamos, NM 87501, USA
+ViralProj15424	NCBI	GCF_000862685.1	931244	True	Human papillomavirus type 90	Microbiology & Immunology, Albert Einstein College of Medicine
+ViralProj34847	NCBI	GCF_000883655.1	1175848	True	Human papillomavirus 108	de Villiers E.M., Characterization of Tumorviruses, Deutsches Krebsforschungszentrum, Im Neuenheimer Feld 242, Heidelberg, 69120, GERMANY
+ViralProj39691	NCBI	GCF_000884175.1	1175851	True	Human papillomavirus 116	Blood Systems Research Institute
+ViralProj289889	NCBI	GCF_001184845.1	2169902	True	Human papillomavirus 201	Laboratory Medicine, Karolinska Institutet
+ViralProj14027	NCBI	GCF_000839365.1	333928	True	Human papillomavirus type 48	Andrew D. Farmer, HIV Sequence Database, Los Alamos National Labroatory, T-10, Mail Stop K710, Los Alamos, NM 87501, USA
+ViralProj15488	NCBI	GCF_000864825.1	334209	True	Human papillomavirus type 96	NCBI
+ViralProj15508	NCBI	GCF_000864925.1	337048	True	Human papillomavirus type 32	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ViralProj49377	NCBI	GCF_000889075.1	1175852	True	Human papillomavirus 121	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ViralProj62171	NCBI	GCF_000889675.1	1513258	True	Human papillomavirus 128	Clinic for Dermatology, Venerology und Allergology, Haut Tumor Centrum Charite (HTCC), Charite - Universitaetsmedizin Berlin
+ViralProj62181	NCBI	GCF_000889695.1	1175849	True	Human papillomavirus 134	Clinic for Dermatology, Venerology und Allergology, Haut Tumor Centrum Charite (HTCC), Charite - Universitaetsmedizin Berlin
+ViralProj215652	NCBI	GCF_000912535.1	1513260	True	Human papillomavirus 179	Kocjan B.J., Ljubljana, Institute of Microbiology and, Immunology, Faculty of Medicine, Univers, Zaloska 4, Ljubljana, 1000, SLOVENIA
+ViralProj229821	NCBI	GCF_000913075.1	1961678	True	Human papillomavirus 167	Genetic Department, Peking University Cancer Hospital & Institute
+ViralProj283065	NCBI	GCF_000989155.1	1647924	True	Human papillomavirus KC5	Genetic Department, Peking University Cancer Hospital & Institute
+ViralProj293723	NCBI	GCF_001274345.1	10566	True	Human papillomavirus	Laboratory Medicine, Karolinska Institutet
+ViralProj36517	NCBI	GCF_000882135.1	1175850	True	Human papillomavirus 112	Department of Medical Microbiology, Institution of Laboratory Medicine
+ViralProj14327	NCBI	GCF_000841625.1	333929	True	Human papillomavirus type 50	Andrew D. Farmer, HIV Sequence Database, Los Alamos National Labroatory, T-10, Mail Stop K710, Los Alamos, NM 87501, USA
+ViralProj15485	NCBI	GCF_000863845.1	334205	True	Human papillomavirus type 41	Hirt L., Deutsches Krebsforschungszentrum, Abt. ATV, D-6900 Heidelberg, Germany
+ViralProj15506	NCBI	GCF_000865665.1	337042	True	Human papillomavirus 18	NCBI
+ViralProj15507	NCBI	GCF_000866485.1	337044	True	Human papillomavirus type 26	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ViralProj208538	NCBI	GCF_000908695.1	1513256	True	Human papillomavirus 154	Department of Medical Microbiology, Malmo University Hospital Lund University
+ViralProj387245	NCBI	GCF_002153865.1	652810	True	Human papillomavirus type 85	Laboratorio de Biologia Molecular, Universidade Federal do Rio Grande
+ViralProj167868	NCBI	GCF_000898855.1	1513256	True	Human papillomavirus 140	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ViralProj15492	NCBI	GCF_000864845.1	333926	True	Human papillomavirus 4	H. Delius, Deutsches Krebsforschungszentrum, Abt ATV, Im Neuenheimer Feld 506, W -6900 Heidelberg, FRG
+ViralProj15486	NCBI	GCF_000865565.1	334204	True	Human papillomavirus type 63	H. Delius, Deutsches Krebsforschungszentrum, Abt ATV, Im Neuenheimer Feld 506, W -6900 Heidelberg, FRG
+ViralProj17119	NCBI	GCF_000868225.1	1175848	True	Human papillomavirus 103	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ViralProj15450	NCBI	GCF_000861925.1	333757	True	Human papillomavirus type 7	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ViralProj15454	NCBI	GCF_000861945.1	333754	True	Human papillomavirus type 6b	NCBI
+ViralProj51741	NCBI	GCF_000890115.1	1513257	True	Human papillomavirus 127	Laboratory of Cellular Oncology, National Cancer Institute, NIH
+ViralProj62177	NCBI	GCF_000890535.1	1513259	True	Human papillomavirus 131	Clinic for Dermatology, Venerology und Allergology, Haut Tumor Centrum Charite (HTCC), Charite - Universitaetsmedizin Berlin
+ViralProj36519	NCBI	GCF_000883695.1	1175849	True	Human papillomavirus 109	Department of Medical Microbiology, Institution of Laboratory Medicine
+ASM282698v1	NCBI	GCF_002826985.1	1513264	True	Human papillomavirus type 161	Genetic Department, Peking University Cancer Hospital & Institute
+ASM282682v1	NCBI	GCF_002826825.1	931244	True	Human papillomavirus 71	Toshihiko T. Matsukura, National Institute of Infectious Diseases, Department of Virology II; 1-23-1 Toyama, Shinjuku, Tokyo 160, Japan
+ASM282700v1	NCBI	GCF_002827005.1	1961679	True	Human papillomavirus 172	Pathology, University of Washington
+ASM282704v1	NCBI	GCF_002827045.1	1961783	True	Human papillomavirus 204	Institute of Microbiology and Immunology, University of Ljubljana, Faculty of Medicine
+ASM282702v1	NCBI	GCF_002827025.1	1961680	True	Human papillomavirus 175	Department of Laboratory Medicine, Lund University
+ASM298736v1	NCBI	GCF_002987365.1	1961682	True	Human papillomavirus 184	Kocjan B.J., Ljubljana, Institute of Microbiology and Immunology, Faculty of Medicine, Univers, Zaloska 4, Ljubljana, 1000, SLOVENIA
+ASM305560v1	NCBI	GCF_003055605.1	1961683	True	Human papillomavirus 187	Department of Pediatrics, Albert Einstein College of Medicine
+ASM318083v1	NCBI	GCA_003180835.1	337049	True	Human papillomavirus 73	H. Delius, Deutsches Kerbsforschungzentrum, Abt. ATV - 0686, Im Neuenheimer Feld 506, 69120 Heidelberg, FRG
+ASM318091v1	NCBI	GCA_003180915.1	333924	True	Human papillomavirus 80	H. Delius, Deutsches Krebsforschungzentrum, Abt. ATV - 0686, Im Neuenheimer Feld 506, 69120 Heidelberg, FRG
+ASM317865v1	NCBI	GCA_003178655.1	1175850	True	Human papillomavirus 119	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM317885v1	NCBI	GCA_003178855.1	1513257	True	Human papillomavirus 148	Clinic for Dermatology, Venerology und Allergology, Haut Tumor Centrum Charite (HTCC), Charite - Universitaetsmedizin Berlin
+ASM318009v1	NCBI	GCA_003180095.1	337048	True	Human papillomavirus 42	na
+ASM318089v1	NCBI	GCA_003180895.1	337039	True	Human papillomavirus 77	H. Delius, Deutsches Krebsforschungzentrum, Abt. ATV - 0686, Im Neuenheimer Feld 506, 69120 Heidelberg, FRG
+ASM314750v1	NCBI	GCA_003147505.1	1851219	True	Human papillomavirus type 194	Department of Pediatrics, Albert Einstein College of Medicine
+ASM317753v1	NCBI	GCA_003177535.1	333767	True	Human papillomavirus 84	Microbiology & Immunology, Albert Einstein College of Medicine
+ASM317755v1	NCBI	GCA_003177555.1	333767	True	Human papillomavirus 86	Microbiology & Immunology, Albert Einstein College of Medicine
+ASM317765v1	NCBI	GCA_003177655.1	333767	True	Human papillomavirus 87	Menzo S., Institute of Microbiology, University of Ancona, via Ranieri, Monte D'Ago, 60020, ITALY
+ASM317775v1	NCBI	GCA_003177755.1	337039	True	Human papillomavirus 94	de Villiers E.M., Div. Characterization of Tumorviruses, Deutsches Krebsforschungszentrum, Im Neuenheimer Feld 242, Heidelberg, 69120, GERMANY
+ASM317805v1	NCBI	GCA_003178055.1	333924	True	Human papillomavirus 107	Department of Medical Microbiology, Clinical Microbiology, Institution of Laboratory Medicine
+ASM317835v1	NCBI	GCA_003178355.1	334207	True	Human papillomavirus 115	Microbiologia, Instituto de Biologia Molecular y Celular de Rosario - CONICET
+ASM317845v1	NCBI	GCA_003178455.1	337051	True	Human papillomavirus 105	de Villiers E.M., Characterization of Tumorviruses, Deutsches Krebsforschungszentrum, Im Neuenheimer Feld 242, Heidelberg, 69120, GERMANY
+ASM317749v1	NCBI	GCA_003177495.1	337042	True	Human papillomavirus 85	Department of Microbiology, National University of Singapore
+ASM317759v1	NCBI	GCA_003177595.1	333767	True	Human papillomavirus 89	Microbiology & Immunology, Albert Einstein College of Medicine
+ASM317779v1	NCBI	GCA_003177795.1	333767	True	Human papillomavirus 62	Microbiology & Immunology, Albert Einstein College of Medicine
+ASM317789v1	NCBI	GCA_003177895.1	337041	True	Human papillomavirus 58	na
+ASM317841v1	NCBI	GCA_003178415.1	333924	True	Human papillomavirus 100	de Villiers E.M., Characterization of Tumorviruses, Deutsches Krebsforschungszentrum, Im Neuenheimer Feld 242, Heidelberg, 69120, GERMANY
+ASM317871v1	NCBI	GCA_003178715.1	1175849	True	Human papillomavirus 123	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM318003v1	NCBI	GCA_003180035.1	337051	True	Human papillomavirus 47	na
+ASM318045v1	NCBI	GCA_003180455.1	337043	True	Human papillomavirus 57	H. Delius, DEUTSCHES KREBSFORSCHUNGSZENTRUM, ABTEILUNG ATV, IM NEUENHEIMER FELD 280, D 6900 HEIDELBERG
+ASM318085v1	NCBI	GCA_003180855.1	334207	True	Human papillomavirus 75	H. Delius, Deutsches Krebsforschungzentrum, Abt. ATV - 0686, Im Neuenheimer Feld 506, 69120 Heidelberg, FRG
+ASM314748v1	NCBI	GCA_003147485.1	1851215	True	Human papillomavirus type 190	Department of Pediatrics, Albert Einstein College of Medicine
+ASM317761v1	NCBI	GCA_003177615.1	333754	True	Human papillomavirus 74	Microbiology & Immunology, Albert Einstein College of Medicine
+ASM317771v1	NCBI	GCA_003177715.1	333767	True	Human papillomavirus 81	de Villiers E.M., Div. Characterization of Tumorviruses, Deutsches Krebsforschungszentrum, Im Neuenheimer Feld 242, Heidelberg, 69120, GERMANY
+ASM317843v1	NCBI	GCA_003178435.1	333924	True	Human papillomavirus 104	de Villiers E.M., Characterization of Tumorviruses, Deutsches Krebsforschungszentrum, Im Neuenheimer Feld 242, Heidelberg, 69120, GERMANY
+ASM413334v1	NCBI	GCF_004133345.1	2093789	True	Human papillomavirus type 203	Laboratory Medicine, Karolinska Institutet
+ASM3111323v1	NCBI	GCA_031113235.1	931244	True	Human papillomavirus 71	School of Medicine, Jiangsu University
+ASM3112844v1	NCBI	GCA_031128445.1	337042	True	Human papillomavirus type 68b	Schwarz E., German Cancer Research Center, F030, Im Neuenheimer Feld 280, 69120, GERMANY
+ASM3115442v1	NCBI	GCA_031154425.1	337039	True	Human papillomavirus type 78	Contact:Tetsutaro Sata National Institute of Infectious Diseases, Pathology; Toyama 1-23-1, Shinjuku, Tokyo 162-8640, Japan
+ASM3111671v1	NCBI	GCA_031116715.1	337043	True	Human papillomavirus type 57b	Phoebe Mounts, Molecular Microbiology & Immunology, Johns Hopkins School of Hygiene & Public Health, 615 N.Wolfe St., Baltimore, MD 21205, USA
+ASM3116845v1	NCBI	GCA_031168455.1	2060135	True	Human papillomavirus type 211	Pathology, University of Cape Town
+ASM3116850v1	NCBI	GCA_031168505.1	2060136	True	Human papillomavirus type 212	Pathology, University of Cape Town
+ASM3117337v1	NCBI	GCA_031173375.1	2200956	True	Human papillomavirus type 219	Pathology, University of Cape Town
+ASM3117340v1	NCBI	GCA_031173405.1	2200957	True	Human papillomavirus type 220	Pathology, University of Cape Town
+ASM3110911v1	NCBI	GCA_031109115.1	337051	True	Human papillomavirus 36	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM3110965v1	NCBI	GCA_031109655.1	337049	True	Human papillomavirus 73	The Biodesign Center of Fundamental and Applied Microbiomics, Arizona State University
+ASM3116264v1	NCBI	GCA_031162645.1	337049	True	Human papillomavirus type 177	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3116269v1	NCBI	GCA_031162695.1	1175849	True	Human papillomavirus 186	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3116274v1	NCBI	GCA_031162745.1	1175849	True	Human papillomavirus 193	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3117346v1	NCBI	GCA_031173465.1	2200959	True	Human papillomavirus type 222	Pathology, University of Cape Town
+ASM3132191v1	NCBI	GCA_031321915.1	3003859	True	Human papillomavirus 215	The Biodesign Center of Fundamental and Applied Microbiomics, Arizona State University
+ASM3132189v1	NCBI	GCA_031321895.1	3003845	True	Human papillomavirus mSD2	The Biodesign Center of Fundamental and Applied Microbiomics, Arizona State University
+ASM3131429v1	NCBI	GCA_031314295.1	2944249	True	Human papillomavirus type 229	Chronic Viral Disease Branch, Centers for Disease Control and Prevention
+ViralProj14406	NCBI	GCF_000846285.1	334208	True	Human papillomavirus type 92	NCBI
+ViralProj167869	NCBI	GCF_000898255.1	1513262	True	Human papillomavirus 144	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ViralProj17121	NCBI	GCF_000869845.1	1175848	True	Human papillomavirus 101	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ViralProj300230	NCBI	GCF_001430115.1	1513265	True	Human papillomavirus 163	Genetic Department, Peking University Cancer Hospital & Institute
+ViralProj376170	NCBI	GCF_002006915.1	1513263	True	Human papillomavirus 156	Microbiologia, Instituto de Biologia Molecular y Celular de Rosario - CONICET
+ViralProj167867	NCBI	GCF_000897255.1	1513261	True	Human papillomavirus 137	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ViralProj167865	NCBI	GCF_000898235.1	1513260	True	Human papillomavirus 135	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ViralProj243630	NCBI	GCF_000918095.1	1961681	True	Human papillomavirus 178	Laboratory Medicine, Lund University, Medical Microbiology
+ViralProj28737	NCBI	GCF_000874925.1	333931	True	Human papillomavirus type 88	Departement of Medical Microbiology, Institution of Laboratory Medicin
+ViralProj76727	NCBI	GCF_000896435.1	1513256	True	Human papillomavirus 126	Contact:Nagayasu Egawa National Cancer Center Institute, Virology Division; 5-1-1 Tsukiji, Chuo-ku, Tokyo 104-0045, Japan
+ViralProj178458	NCBI	GCF_000899515.1	1513264	True	Human papillomavirus 166	Genetic Department, Peking University Cancer Hospital & Institute
+ViralProj167866	NCBI	GCF_000899695.1	1513256	True	Human papillomavirus 136	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM298734v1	NCBI	GCF_002987345.1	337050	True	Human papillomavirus 30	H. Delius, Deutsches Krebsforschungszentrum, Abteilung ATV, Im Neuenheimer Feld 506, W 6900 Heidelberg, FRG
+ASM317757v1	NCBI	GCA_003177575.1	333757	True	Human papillomavirus 91	Microbiology & Immunology, Albert Einstein College of Medicine
+ASM317767v1	NCBI	GCA_003177675.1	333757	True	Human papillomavirus 43	de Villiers E.M., Div. Characterization of Tumorviruses, Deutsches Krebsforschungszentrum, Im Neuenheimer Feld 242, Heidelberg, 69120, GERMANY
+ASM317777v1	NCBI	GCA_003177775.1	337051	True	Human papillomavirus 93	na
+ASM317787v1	NCBI	GCA_003177875.1	337041	True	Human papillomavirus 67	Yasuyuki Kirii, Kanebo Institute for Cancer Research; 1-5-90 Tomobuchi-cho, Miyakojima-ku, Osaka 534, Japan
+ASM317837v1	NCBI	GCA_003178375.1	337051	True	Human papillomavirus 98	de Villiers E.M., Characterization of Tumorviruses, Deutsches Krebsforschungszentrum, Im Neuenheimer Feld 242, Heidelberg, 69120, GERMANY
+ASM317839v1	NCBI	GCA_003178395.1	337051	True	Human papillomavirus 99	de Villiers E.M., Characterization of Tumorviruses, Deutsches Krebsforschungszentrum, Im Neuenheimer Feld 242, Heidelberg, 69120, GERMANY
+ASM317847v1	NCBI	GCA_003178475.1	333924	True	Human papillomavirus 113	de Villiers E.M., Characterization of Tumorviruses, Deutsches Krebsforschungszentrum, Im Neuenheimer Feld 242, Heidelberg, 69120, GERMANY
+ASM317849v1	NCBI	GCA_003178495.1	337039	True	Human papillomavirus 125	Kovanda A., Laboratory for Molecular Microbiology, Institute of Microbiology and Immunology, Medical Faculty of, Zaloka 4, Ljubljana, 1000, SLOVENIA
+ASM317859v1	NCBI	GCA_003178595.1	333767	True	Human papillomavirus 114	Department of Clinical Microbiology, Institution of Laboratory Medicine
+ASM318051v1	NCBI	GCA_003180515.1	333926	True	Human papillomavirus 65	H. Delius, Deutsches Krebsforschungszentrum, Abt ATV, Im Neuenheimer Feld 506, W -6900 Heidelberg, FRG
+ASM318081v1	NCBI	GCA_003180815.1	333767	True	Human papillomavirus 72	H. Delius, Deutsches Kerbsforschungzentrum, Abt. ATV - 0686, Im Neuenheimer Feld 506, 69120 Heidelberg, FRG
+ASM318025v1	NCBI	GCA_003180255.1	337051	True	Human papillomavirus 24	Andrew D. Farmer, HIV Sequence Database, Los Alamos National Labroatory, T-10, Mail Stop K710, Los Alamos, NM 87501, USA
+ASM318087v1	NCBI	GCA_003180875.1	334207	True	Human papillomavirus 76	H. Delius, Deutsches Krebsforschungzentrum, Abt. ATV - 0686, Im Neuenheimer Feld 506, 69120 Heidelberg, FRG
+ASM428791v1	NCBI	GCA_004287915.1	192971	True	Human papillomavirus sp.	Laboratory of Cellular Oncology, National Cancer Institute
+ASM3110619v1	NCBI	GCA_031106195.1	337044	True	Human papillomavirus 69	The Biodesign Center of Fundamental and Applied Microbiomics, Arizona State University
+ASM3109926v1	NCBI	GCA_031099265.1	337041	True	Human papillomavirus 52	Contact:Iwao Kukimoto National Institute of Infectious Diseases, Pathogen Genomics Center; 4-7-1 Gakuen, Musashi-murayama, Tokyo 208-0011, Japan
+ASM3116266v1	NCBI	GCA_031162665.1	333924	True	Human papillomavirus type 182	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3116267v1	NCBI	GCA_031162675.1	1513265	True	Human papillomavirus type 183	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3116272v1	NCBI	GCA_031162725.1	1175852	True	Human papillomavirus 191	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3110592v1	NCBI	GCA_031105925.1	333754	True	Human papillomavirus type 6	to the INSDC. Jelen M., HIV laboratory, Institute of Microbiology and Immunology, Zaloska 4, 1000 Ljubljana, SLOVENIA
+ASM3110618v1	NCBI	GCA_031106185.1	337041	True	Human papillomavirus 67	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM3109887v1	NCBI	GCA_031098875.1	333754	True	Human papillomavirus 13	DACT, UFAM
+ASM3109908v1	NCBI	GCA_031099085.1	337050	True	Human papillomavirus 56	Microbiology & Immunology, Albert Einstein College of Medicine
+ASM3109917v1	NCBI	GCA_031099175.1	333924	True	Human papillomavirus 17	Department of Medical Microbiology, Malmo University Hospital Lund University
+ASM3109922v1	NCBI	GCA_031099225.1	337050	True	Human papillomavirus 30	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3109925v1	NCBI	GCA_031099255.1	333757	True	Human papillomavirus 40	The Biodesign Center of Fundamental and Applied Microbiomics, Arizona State University
+ASM3111331v1	NCBI	GCA_031113315.1	337044	True	Human papillomavirus 82	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3116265v1	NCBI	GCA_031162655.1	1513256	True	Human papillomavirus 181	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3116270v1	NCBI	GCA_031162705.1	333929	True	Human papillomavirus type 188	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3116271v1	NCBI	GCA_031162715.1	1175849	True	Human papillomavirus 189	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3116275v1	NCBI	GCA_031162755.1	337051	True	Human papillomavirus type 195	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3116276v1	NCBI	GCA_031162765.1	337051	True	Human papillomavirus type 196	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3112060v1	NCBI	GCA_031120605.1	337043	True	Human papillomavirus type 27b	Taihei Yamaguchi, Kagoshima University Graduate School of Medicine and Dental Sciences, Department of Preventive Dentistry; Sakuragaoka 8-chome 35-1, Kagoshima, Kagoshima 890-8544, Japan
+ASM3112071v1	NCBI	GCA_031120715.1	337043	True	Human papillomavirus 57	Department of Dermatology, the Affiliated Hospital of Jiangsu University
+ASM3111303v1	NCBI	GCA_031113035.1	337051	True	Human papillomavirus RTRX7	Institute for Virology, University Koeln, Fuerst-Pueckler-Strasse 56, Koeln 50935, Germany
+ASM3112774v1	NCBI	GCA_031127745.1	333924	True	Human papillomavirus 120	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM3110620v1	NCBI	GCA_031106205.1	333754	True	Human papillomavirus type 6a	na
+ASM3110954v1	NCBI	GCA_031109545.1	337042	True	Human papillomavirus 68	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3116263v1	NCBI	GCA_031162635.1	1175850	True	Human papillomavirus type 176	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3116268v1	NCBI	GCA_031162685.1	334209	True	Human papillomavirus type 185	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3116273v1	NCBI	GCA_031162735.1	1513260	True	Human papillomavirus 192	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3109896v1	NCBI	GCA_031098965.1	337041	True	Human papillomavirus 35	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM3109903v1	NCBI	GCA_031099035.1	337042	True	Human papillomavirus 39	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3109904v1	NCBI	GCA_031099045.1	337048	True	Human papillomavirus 42	Cell, NICPBP
+ASM3109907v1	NCBI	GCA_031099075.1	337044	True	Human papillomavirus 51	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3109913v1	NCBI	GCA_031099135.1	337041	True	Human papillomavirus 58	Department of Microbiology, The Chinese University of Hong Kong
+ASM3110616v1	NCBI	GCA_031106165.1	333767	True	Human papillomavirus type 61	Department of Pediatrics, Albert Einstein College of Medicine
+ASM3110617v1	NCBI	GCA_031106175.1	337050	True	Human papillomavirus 66	Microbiology & Immunology, Albert Einstein College of Medicine
+ASM3109890v1	NCBI	GCA_031098905.1	337041	True	Human papillomavirus 31	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM3109891v1	NCBI	GCA_031098915.1	337041	True	Human papillomavirus 33	Microbiology and Immunology, Albert Einstein College of Medicine of Yeshiva University
+ASM3109914v1	NCBI	GCA_031099145.1	337051	True	Human papillomavirus type 5b	na
+ASM3112070v1	NCBI	GCA_031120705.1	337043	True	Human papillomavirus type 2	Department of Prion Disease, National Institute for Viral Disease Control and Prevention
+ASM3112074v1	NCBI	GCA_031120745.1	333924	True	Human papillomavirus type 38b	Department of Medical Microbiology, Institution of Laboratory Medicine
+ASM3112253v1	NCBI	GCA_031122535.1	337043	True	Human papillomavirus type 57c	Contact:Hidero Kitasato Kitasato University, School of Allied Health Sciences, Microbiology; Kitasato 1-15-1, Sagamihara, Kanagawa 228-8555, Japan
+ASM3116590v1	NCBI	GCA_031165905.1	333924	True	Human papillomavirus type 209	Microbiologia, Instituto de Biologia Molecular y Celular de Rosario - CONICET
+ASM3116855v1	NCBI	GCA_031168555.1	2060139	True	Human papillomavirus type 215	Pathology, University of Cape Town
+ASM3115902v1	NCBI	GCA_031159025.1	333767	True	Human papillomavirus type 72b	Laboratory Medicine, Lund University, Medical Microbiology
+ASM3117343v1	NCBI	GCA_031173435.1	2200958	True	Human papillomavirus type 221	Pathology, University of Cape Town
+ASM3116860v1	NCBI	GCA_031168605.1	2060140	True	Human papillomavirus type 216	Pathology, University of Cape Town
+ASM3117529v1	NCBI	GCA_031175295.1	1513257	True	Human papillomavirus type 210	Grupo Virologia Humana, Instituto de Biologia Molecular y Celular de Rosario (CONICET)
+ASM3132192v1	NCBI	GCA_031321925.1	3003860	True	Human papillomavirus 226	The Biodesign Center of Fundamental and Applied Microbiomics, Arizona State University
+ASM3125844v1	NCBI	GCA_031258445.1	2853106	True	Human papillomavirus AZ1_1	The Biodesign Center of Fundamental and Applied Microbiomics, Arizona State University
+ASM3132190v1	NCBI	GCA_031321905.1	3003858	True	Human papillomavirus 214	The Biodesign Center of Fundamental and Applied Microbiomics, Arizona State University
