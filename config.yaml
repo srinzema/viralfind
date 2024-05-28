@@ -1,11 +1,10 @@
 run: "./run"
 results: "./results"
+fastq_dir: "/vol/rimlstemp/molbio/martens/slrinzema/fastq/fastq/"
+samplesheet: "/scratch/slrinzema/hpv/samples.tsv"
 
-fastq_dir: "/scratch/jmartens/vera/results/fastq"
-genome_dir: "/scratch/slrinzema/snake/genomes"
-
-first_genome: "/scratch/slrinzema/snake/genomes/hg38"
+genome_dir: "/scratch/slrinzema/hpv/genomes"
 first_assembly: "hg38"
-
-second_genome: "/scratch/slrinzema/snake/genomes/Human_papillomavirus"
 second_assembly: "HPV_metagenome"
+
+merge_replicates: True

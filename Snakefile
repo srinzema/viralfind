@@ -8,7 +8,7 @@ GENOME_DIR = Path(config["genome_dir"])
 FIRST_ASSEBLY_DIR = GENOME_DIR / config["first_assembly"]
 SECOND_ASSEMBLY_DIR = GENOME_DIR / config["second_assembly"] 
 
-samples = utils.load_samples("samples.tsv", config["fastq_dir"])
+samples = utils.load_samples(config["samplesheet"], config["fastq_dir"])
 paired_end = samples[samples["read2"].notnull()]
 single_end = samples[samples["read2"].isna()]
 assemblies = utils.load_assemblies("assemblies.tsv")
@@ -46,9 +46,13 @@ rule all:
 
 
 rule summarize_counts:
-    input: expand("run/counts/per_sample/{sample}.tsv", sample=samples.alias)
+    input: 
+        counts = expand("run/counts/per_sample/{sample}.tsv", sample=samples.alias),
+        samplesheet = config["samplesheet"]
+    params: "-m" if config["merge_replicates"] else ""
+    log: "run/logs/summarize_counts.log"
     output: "run/counts/raw_counts.tsv"
-    shell: "python3 scripts/merge_counts.py {output} {input}"
+    shell: "python3 scripts/merge_counts.py -o {output} -i {input.counts} -s {input.samplesheet} {params} > {log} 2>&1"
 
 
 rule featurecounts:
@@ -126,7 +130,7 @@ rule star_sp:
 # Misschien outFilterMismatchNmax=<10 ?
 rule star_fp:
     input:
-        index = Path(config["first_genome"]) / "index",
+        index = FIRST_ASSEBLY_DIR / "index",
         reads = get_trimmed_reads
     output: 
         bam = "run/alignment/first_pass/{sample}_Aligned.out.bam"
