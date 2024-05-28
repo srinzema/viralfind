@@ -1,9 +1,9 @@
 run: "./run"
 results: "./results"
 fastq_dir: "/vol/rimlstemp/molbio/martens/slrinzema/fastq/fastq/"
-samplesheet: "/scratch/slrinzema/hpv/samples.tsv"
+samplesheet: "./samples.tsv"
 
-genome_dir: "/scratch/slrinzema/hpv/genomes"
+genome_dir: "./genomes"
 first_assembly: "hg38"
 second_assembly: "HPV_metagenome"
 
