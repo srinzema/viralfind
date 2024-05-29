@@ -149,16 +149,15 @@ rule star_fp:
 
 rule star_build_index:
     input:
-        fa = GENOME_DIR / ("{assembly}/{assembly}.fa"),
-        annotation_gtf = GENOME_DIR / ("{assembly}/{assembly}.annotation.gtf"),
-    output:
-        directory(GENOME_DIR / "{assembly}/index")
+        fa = f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa",
+        annotation_gtf = f"{GENOME_DIR}/{{assembly}}/{{assembly}}.annotation.gtf",
+    output: directory(f"{GENOME_DIR}/{{assembly}}/index")
     log: "run/logs/star_build_index/" + "{assembly}.log"
     threads: 16
     params: genome_dir = SECOND_ASSEMBLY_DIR
     shell:
         """
-        STAR --runThreadN {threads} --runMode genomeGenerate --genomeDir {params.genome_dir}/index \
+        STAR --runThreadN {threads} --runMode genomeGenerate --genomeDir {output} \
         --genomeFastaFiles {input.fa} --sjdbGTFfile {input.annotation_gtf} > {log} 2>&1
         """
 
@@ -239,6 +238,6 @@ rule download_assembly:
         accession = get_accession,
         assembly = lambda w: w.assembly,
     log: "run/logs/download_assembly/{{assembly}}.log"
-    # wildcard_constraints: assembly = "(?!\/index)"
+    wildcard_constraints: assembly = "(?!\/index)"
     threads: 1
     shell: f"genomepy install {{params.accession}} -g {GENOME_DIR} -l {{params.assembly}} -t {{threads}} -a > {{log}} 2>&1"
