@@ -1,10 +1,11 @@
-run: "./run"
-results: "./results"
+run: "run"
+results: "results"
 fastq_dir: "/vol/rimlstemp/molbio/martens/slrinzema/fastq/fastq/"
-samplesheet: "/scratch/slrinzema/hpv/samples.tsv"
+samplesheet: "samples.tsv"
 
 genome_dir: "/scratch/slrinzema/hpv/genomes"
 first_assembly: "hg38"
 second_assembly: "HPV_metagenome"
+assembly_file: "/scratch/slrinzema/hpv/assemblies.tsv"
 
 merge_replicates: True
