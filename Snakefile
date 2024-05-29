@@ -52,7 +52,7 @@ rule summarize_counts:
     params: "-m" if config["merge_replicates"] else ""
     log: "run/logs/summarize_counts.log"
     output: "run/counts/raw_counts.tsv"
-    shell: "python3 scripts/merge_counts.py -o {output} -i {input.counts} -s {input.samplesheet} {params} > {log} 2>&1"
+    shell: "python3 scripts/merge_counts.py -o {output} -i {input.counts} -s {input.samplesheet} -f {params} > {log} 2>&1"
 
 
 rule featurecounts:
