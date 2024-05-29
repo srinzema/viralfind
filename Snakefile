@@ -193,22 +193,22 @@ rule fastp_se:
         "fastp -w {threads} --in1 {input} --out1 {output.out} -h {output.html} -j {output.json} > {log} 2>&1"
 
 
-rule merge_assemblies:
-    input:
-        directories = expand(GENOME_DIR / "{assembly}", assembly=assemblies.species),
-        annotation_bed = expand(GENOME_DIR / "{assembly}/{assembly}.annotation.bed", assembly=assemblies.species),
-        annotation_gtf = expand(GENOME_DIR / "{assembly}/{assembly}.annotation.gtf", assembly=assemblies.species),
-        fa = expand(GENOME_DIR / "{assembly}/{assembly}.fa", assembly=assemblies.species),
-        fa_fai = expand(GENOME_DIR / "{assembly}/{assembly}.fa.fai", assembly=assemblies.species),
-        fa_sizes = expand(GENOME_DIR / "{assembly}/{assembly}.fa.sizes", assembly=assemblies.species),
-        gaps_bed = expand(GENOME_DIR / "{assembly}/{assembly}.gaps.bed", assembly=assemblies.species),
+rule construct_metagenome:
+    input: 
+        directories = expand(f"{GENOME_DIR}/{{assembly}}", assembly=assemblies.species),
+        annotation_bed = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.annotation.bed", assembly=assemblies.species),
+        annotation_gtf = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.annotation.gtf", assembly=assemblies.species),
+        fa = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa", assembly=assemblies.species),
+        fa_fai = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa.fai", assembly=assemblies.species),
+        fa_sizes = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa.sizes", assembly=assemblies.species),
+        gaps_bed = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.gaps.bed", assembly=assemblies.species),
     output:
-        annotation_bed = GENOME_DIR / config["second_assembly"] / (config["second_assembly"] + ".annotation.bed"),
-        annotation_gtf = GENOME_DIR / config["second_assembly"] / (config["second_assembly"] + ".annotation.gtf"),
-        fa = GENOME_DIR / config["second_assembly"] / (config["second_assembly"] + ".fa"),
-        fa_fai = GENOME_DIR / config["second_assembly"] / (config["second_assembly"] + ".fa.fai"),
-        fa_sizes = GENOME_DIR / config["second_assembly"] / (config["second_assembly"] + ".fa.sizes"),
-        gaps_bed = GENOME_DIR / config["second_assembly"] / (config["second_assembly"] + ".gaps.bed"),
+        annotation_bed = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.annotation.bed",
+        annotation_gtf = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.annotation.gtf",
+        fa = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.fa",
+        fa_fai = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.fa.fai",
+        fa_sizes = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.fa.sizes",
+        gaps_bed = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.gaps.bed",
     shell:
         """
         bash scripts/merge_assembly.sh {output.annotation_bed} {input.annotation_bed};
@@ -227,22 +227,18 @@ def get_accession(wildcards):
 
 
 rule download_assembly:
-    output:
-        directory(temp(GENOME_DIR / "{assembly}")),
-        temp(GENOME_DIR / "{assembly}/assembly_report.txt"),
-        temp(GENOME_DIR / "{assembly}/README.txt"),
-        temp(GENOME_DIR / "{assembly}/{assembly}.annotation.bed"),
-        temp(GENOME_DIR / "{assembly}/{assembly}.annotation.gtf"),
-        temp(GENOME_DIR / "{assembly}/{assembly}.fa"),
-        temp(GENOME_DIR / "{assembly}/{assembly}.fa.fai"),
-        temp(GENOME_DIR / "{assembly}/{assembly}.fa.sizes"),
-        temp(GENOME_DIR / "{assembly}/{assembly}.gaps.bed")
-    params:
+    output: 
+        temp(directory(f"{GENOME_DIR}/{{assembly}}/")),
+        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.annotation.gtf",
+        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.annotation.bed",
+        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa",
+        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa.fai",
+        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa.sizes",
+        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.gaps.bed",
+    params: 
         accession = get_accession,
         assembly = lambda w: w.assembly,
-        genome_dir = GENOME_DIR
-    log: "run/logs/download_assembly/{assembly}.log"
-    wildcard_constraints: assembly = "(?!\/index)"
+    log: "run/logs/download_assembly/{{assembly}}.log"
+    # wildcard_constraints: assembly = "(?!\/index)"
     threads: 1
-    shell:
-        "genomepy install {params.accession} -g {params.genome_dir} -l {params.assembly} -t {threads} -a > {log} 2>&1"
+    shell: f"genomepy install {{params.accession}} -g {GENOME_DIR} -l {{params.assembly}} -t {{threads}} -a > {{log}} 2>&1"

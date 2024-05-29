@@ -3,8 +3,9 @@ results: "./results"
 fastq_dir: "/vol/rimlstemp/molbio/martens/slrinzema/fastq/fastq/"
 samplesheet: "./samples.tsv"
 
-genome_dir: "./genomes"
+genome_dir: "/scratch/slrinzema/hpv/genomes"
 first_assembly: "hg38"
 second_assembly: "HPV_metagenome"
+assembly_file: "/scratch/slrinzema/hpv/assemblies.tsv"
 
 merge_replicates: True
