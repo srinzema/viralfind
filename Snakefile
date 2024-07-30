@@ -13,39 +13,59 @@ paired_end = samples[samples["read2"].notnull()]
 single_end = samples[samples["read2"].isna()]
 assemblies = utils.load_assemblies("assemblies.tsv")
 
+# These following functions exist to link wildcards to existing files.
 
 def get_unmapped_reads(wildcards):
     sample_info = samples.loc[samples["alias"] == wildcards.sample].iloc[0]
     if pd.isna(sample_info["read2"]): # SE sample
         return [f"run/unmapped/{wildcards.sample}.unmapped.fastq.gz"]
-    return [f"run/unmapped/{wildcards.sample}_R1.unmapped.fastq.gz", f"run/unmapped/{wildcards.sample}_R2.unmapped.fastq.gz"]
+    return [
+        f"run/unmapped/{wildcards.sample}_R1.unmapped.fastq.gz", 
+        f"run/unmapped/{wildcards.sample}_R2.unmapped.fastq.gz"
+    ]
 
 
 def get_trimmed_reads(wildcards):
     sample_info = samples.loc[samples["alias"] == wildcards.sample].iloc[0]
     if pd.isna(sample_info["read2"]): # SE sample
         return [f"run/trimmed/{wildcards.sample}.trimmed.fastq.gz"]
-    return [f"run/trimmed/{wildcards.sample}_R1.trimmed.fastq.gz", f"run/trimmed/{wildcards.sample}_R2.trimmed.fastq.gz"]
+    return [
+        f"run/trimmed/{wildcards.sample}_R1.trimmed.fastq.gz",
+        f"run/trimmed/{wildcards.sample}_R2.trimmed.fastq.gz"
+    ]
 
 
 def original_read_1(wildcards):
+    "Gets the first fastq for FASTP."
     alias = wildcards.sample
     sample_info = samples.loc[samples["alias"] == alias]
     return sample_info.read1.iloc[0]
 
 
 def original_read_2(wildcards):
+    "Gets the second fastq for FASTP, not used for paired end samples."
     alias = wildcards.sample
     sample_info = samples.loc[samples["alias"] == alias]
     return sample_info.read2.iloc[0]
 
 
+def get_accession(wildcards):
+    row = assemblies.loc[assemblies["species"] == wildcards.assembly]
+    accession = row["name"].iloc[0]
+    return accession
+
+
 rule all:
+    """
+    This rule depends on the raw_counts.tsv table, 
+    which is depends on all other rules.
+    """
     input:
         "run/counts/raw_counts.tsv"
 
 
 rule summarize_counts:
+    "Merge the counts of all samples into a single count table."
     input: 
         counts = expand("run/counts/per_sample/{sample}.tsv", sample=samples.alias),
         samplesheet = config["samplesheet"]
@@ -56,6 +76,7 @@ rule summarize_counts:
 
 
 rule featurecounts:
+    "Run feature counts on the BAM resulting from the second pass."
     input: 
         bam = "run/alignment/second_pass/{sample}_Aligned.out.bam",
         gtf = SECOND_ASSEMBLY_DIR / (config["second_assembly"] + ".annotation.gtf")
@@ -68,8 +89,10 @@ rule featurecounts:
         featureCounts -a {input.gtf} {input.bam} {params.paired_end} -T {threads} -o {output} > {log} 2>&1
         """
 
+# Below are all rules related to mapping
 
 rule bam2fastq_pe:
+    "Converts the unmapped reads into two paired end fastq files."
     input: "run/unmapped/{sample}.unmapped.sorted.bam"
     output: 
         read1 = "run/unmapped/{sample}_R1.unmapped.fastq.gz",
@@ -85,6 +108,7 @@ rule bam2fastq_pe:
 
 
 rule bam2fastq_se:
+    "Converts the unmapped reads into a single end fastq file."
     input: "run/unmapped/{sample}.unmapped.sorted.bam"
     output: "run/unmapped/{sample}.unmapped.fastq.gz"
     log: "run/logs/bam2fastq/{sample}.log"
@@ -97,6 +121,7 @@ rule bam2fastq_se:
 
 
 rule sort_unmapped:
+    "Sorts all unmapped reads."
     input: "run/unmapped/{sample}.unmapped.bam"
     output: temp("run/unmapped/{sample}.unmapped.sorted.bam")
     log: "run/logs/sort_unmapped/{sample}.log"
@@ -104,6 +129,7 @@ rule sort_unmapped:
 
 
 rule extract_unmapped:
+    "Extract all unmapped reads from the first pass into temporary BAM file."
     input: "run/alignment/first_pass/{sample}_Aligned.out.bam"
     output: temp("run/unmapped/{sample}.unmapped.bam")
     log: "run/logs/extract_unmapped/{sample}.log"
@@ -111,6 +137,9 @@ rule extract_unmapped:
 
 
 rule star_sp:
+    """
+    Second pass of STAR, maps all unmapped reads against a custom metagenome.
+    """
     input:
         index = SECOND_ASSEMBLY_DIR / "index",
         reads = get_unmapped_reads
@@ -127,8 +156,12 @@ rule star_sp:
         --outFileNamePrefix {params} > {log} 2>&1
         """
 
-# Misschien outFilterMismatchNmax=<10 ?
+
 rule star_fp:
+    """
+    First pass of STAR, runs against the first assembly.
+    All unmapped reads are kept in the resulting BAM file.
+    """
     input:
         index = FIRST_ASSEBLY_DIR / "index",
         reads = get_trimmed_reads
@@ -144,10 +177,10 @@ rule star_fp:
         --outSAMunmapped Within --outSAMtype BAM Unsorted \
         --outFileNamePrefix {params} > {log} 2>&1
         """
-                # --outFilterMultimapNmax 1 \
 
 
 rule star_build_index:
+    "Build index rule"
     input:
         fa = f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa",
         annotation_gtf = f"{GENOME_DIR}/{{assembly}}/{{assembly}}.annotation.gtf",
@@ -161,13 +194,12 @@ rule star_build_index:
         --genomeFastaFiles {input.fa} --sjdbGTFfile {input.annotation_gtf} > {log} 2>&1
         """
 
+# Fastp rules
 
 rule fastp_pe:
     input:
         read1 = original_read_1,
         read2 = original_read_2,
-        # read1 = Path(config["fastq_dir"]) / "{sample}_R1.fastq.gz",
-        # read2 = Path(config["fastq_dir"]) / "{sample}_R2.fastq.gz"
     output:
         json="run/qc/fastp/{sample}.json",
         html="run/qc/fastp/{sample}.html",
@@ -191,6 +223,8 @@ rule fastp_se:
     shell:
         "fastp -w {threads} --in1 {input} --out1 {output.out} -h {output.html} -j {output.json} > {log} 2>&1"
 
+
+# Rules for constructing a metagenome to map all unmapped reads against
 
 rule construct_metagenome:
     input: 
@@ -217,13 +251,6 @@ rule construct_metagenome:
         bash scripts/merge_assembly.sh {output.fa_sizes} {input.fa_sizes};
         bash scripts/merge_assembly.sh {output.gaps_bed} {input.gaps_bed};
         """
-
-
-def get_accession(wildcards):
-    row = assemblies.loc[assemblies["species"] == wildcards.assembly]
-    accession = row["name"].iloc[0]
-    return accession
-
 
 rule download_assembly:
     output: 
