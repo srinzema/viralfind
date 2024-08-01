@@ -2,6 +2,7 @@ from pathlib import Path
 import pandas as pd
 import os, sys
 
+
 def load_assemblies(assembly_file: str) -> pd.DataFrame:
     _df = pd.read_table(assembly_file)
     original_size = len(_df)
@@ -12,6 +13,7 @@ def load_assemblies(assembly_file: str) -> pd.DataFrame:
     for column in _df.columns:
         _df[column] = _df[column].apply(lambda x: str(x).replace(" ", "_"))
     return _df
+
 
 def load_samples(sample_file: str, fastq_dir: str) -> pd.DataFrame:
     _df = pd.read_table(sample_file).set_index("samples", drop=True)
