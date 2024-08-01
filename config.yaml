@@ -1,6 +1,6 @@
 run: "run"
 results: "results"
-fastq_dir: "/vol/rimlstemp/molbio/martens/slrinzema/fastq/fastq/"
+fastq_dir: "/vol/molbio/martens/jmartens/Branco/MLL-AF9"
 samplesheet: "samples.tsv"
 
 genome_dir: "/scratch/slrinzema/hpv/genomes"
