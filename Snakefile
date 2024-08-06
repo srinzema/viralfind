@@ -116,7 +116,7 @@ rule bam2fastq_se:
     shell:
         """
         samtools fastq -@ {threads} {input} \
-        -o {ouput} -0 /dev/null -s /dev/null -n > {log} 2>&1
+        -o {output} -0 /dev/null -s /dev/null -n > {log} 2>&1
         """
 
 
@@ -218,7 +218,7 @@ rule fastp_se:
         html = "run/qc/fastp/{sample}.html",
         out = "run/trimmed/{sample}.trimmed.fastq.gz"
     log: "run/logs/fastp/{sample}.log"
-    wildcard_constraints: sample = "(?!.*_R\d)"
+    # wildcard_constraints: sample = "(?!.*_R\d)"
     threads: 2
     shell:
         "fastp -w {threads} --in1 {input} --out1 {output.out} -h {output.html} -j {output.json} > {log} 2>&1"
