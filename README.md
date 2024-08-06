@@ -1,5 +1,12 @@
 This workflow is my attempt at modernizing, and generalizing existing viral infection detection pipelines. Using snakemake to implement computational scaling and parallelisation of analysis tasks.
 
+## Pre Workflow setup
+1. **Fill out the config.yaml**
+
+2. **Fill out the samples.tsv**
+
+3. **Run the snakemake command**
+
 ## Workflow Structure
 1. **Metagenome Construction:**
     - Constructs a custom metagenome from multiple assemblies.
