@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+import snakemake
+import argparse
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+
+    # Add the --dry-run (or -n) argument
+    parser.add_argument(
+        "--dry-run",
+        "-n",
+        dest="dryrun",
+        action="store_true",
+        help="If specified, runs the script in dry-run mode (do not actually execute actions).",
+    )
+
+    # Add the --cores (or -c) argument
+    parser.add_argument(
+        "--cores",
+        "-c",
+        dest="cores",
+        type=int,
+        default=1,
+        help="Number of cores to use (default is 1).",
+    )
+
+    # Turn arguments into dict and run snakemake!
+    args = vars(parser.parse_args())
+    snakemake.snakemake("Snakefile", **args)
