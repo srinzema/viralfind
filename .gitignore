@@ -1,3 +1,4 @@
 .snakemake
 run*/
 genomes/
+scripts/__pycache__/
