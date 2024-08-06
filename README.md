@@ -13,4 +13,4 @@ This workflow is my attempt at modernizing, and generalizing existing viral infe
     - **featureCounts:** Counts features from the aligned BAM files.
 
 ## Detailed DAG of the rules
-![alt text](assets/dag.png)
+![](assets/dag.png)
