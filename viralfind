@@ -62,6 +62,15 @@ if __name__ == "__main__":
         help="If specified, runs the script in dry-run mode (do not actually execute actions).",
     )
 
+    # force_incomplete
+    run_parser.add_argument(
+        "--rerun-incomplete",
+        "--ri",
+        dest="force_incomplete",
+        action="store_true",
+        help="Re-run all jobs the output of which is recognized as incomplete.",
+    )
+
     # Add the --cores (or -c) argument
     run_parser.add_argument(
         "--cores",
