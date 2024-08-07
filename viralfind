@@ -2,11 +2,34 @@
 import snakemake
 import argparse
 
+
+def init_workflow(args):
+    print(args)
+
+
+def run_workflow(args):
+    args = vars(args)
+    del args["func"]
+    snakemake.snakemake(
+        "Snakefile", 
+        **args
+    )
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    subparsers = parser.add_subparsers(help="Choose init or run.")
+
+    # Init parser
+    init_parser = subparsers.add_parser("init", help="Initialize the pipeline in the current directory.")
+    init_parser.set_defaults(func=init_workflow)
+
+    # Run parser
+    run_parser = subparsers.add_parser("run", help="Runs the pipeline in the current working directory.")
+    run_parser.set_defaults(func=run_workflow)
 
     # Add the --dry-run (or -n) argument
-    parser.add_argument(
+    run_parser.add_argument(
         "--dry-run",
         "-n",
         dest="dryrun",
@@ -15,7 +38,7 @@ if __name__ == "__main__":
     )
 
     # Add the --cores (or -c) argument
-    parser.add_argument(
+    run_parser.add_argument(
         "--cores",
         "-c",
         dest="cores",
@@ -24,6 +47,8 @@ if __name__ == "__main__":
         help="Number of cores to use (default is 1).",
     )
 
-    # Turn arguments into dict and run snakemake!
-    args = vars(parser.parse_args())
-    snakemake.snakemake("Snakefile", **args)
+    args = parser.parse_args()
+    if hasattr(args, "func"):
+        args.func(args)
+    else:
+        parser.print_help()
