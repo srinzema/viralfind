@@ -1,3 +1,7 @@
+# samples: basename name of your fastq files without file extension and _R1 or _R2
+# alias: your fastq samples will be renamed to the name you put here.
+# condition: no pydeseq2 implemented yet
+# replicate_group: merges the eventual count table on these groups
 samples	alias	condition	replicate_group
-AML_MLLAF9_1_RNA	AML_MLLAF9_1_RNA	None	1
-AML_MLLAF9_4.2_RNA_PE	AML_MLLAF9_4.2_RNA_PE	None	1
+AML_MLLAF9_1_RNA	sample_1	None	1
+AML_MLLAF9_4.2_RNA_PE	sample_2	None	1
