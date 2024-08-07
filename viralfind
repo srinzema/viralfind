@@ -22,7 +22,7 @@ def init_workflow(args):
             shutil.copy(o, t)
             print(f"Copied {o} to {t}")
         except FileNotFoundError:
-            print(f"File {o} not found. Skipping.")
+            print(f"File {file} not found. Skipping.")
         except Exception as e:
             print(f"Error copying {o} to {t}: {e}")
 
