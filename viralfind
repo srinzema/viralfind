@@ -5,13 +5,14 @@ import argparse
 import shutil
 import os
 
+ROOT = Path(__file__).resolve().parent
 
 def init_workflow(args):
     # Define the files to be copied
     files = ("assemblies.tsv", "config.yaml", "samples.tsv")
     
     # Determine the origin directory (where the script is located) and target directory (current working directory)
-    origin = Path(__file__).resolve().parent / "assets"
+    origin = ROOT / "assets"
     target = Path.cwd()
     
     # Iterate over the files and copy each from the origin to the target directory
@@ -34,7 +35,7 @@ def run_workflow(args):
     
     # Call snakemake with the provided arguments
     snakemake.snakemake(
-        "Snakefile", 
+        ROOT / "Snakefile", 
         **args
     )
 
