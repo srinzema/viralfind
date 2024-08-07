@@ -1,10 +1,19 @@
 #!/usr/bin/env python
+from pathlib import Path
 import snakemake
 import argparse
+import shutil
+import os
 
 
 def init_workflow(args):
-    print(args)
+    files = ("assemblies.tsv", "config.yaml", "samples.tsv")
+    origin = Path(__file__).resolve().parent / "assets"
+    target = Path(os.getcwd())
+    for file in files:
+        o = origin / file
+        t = target / file
+        shutil.copy(o, t)
 
 
 def run_workflow(args):
