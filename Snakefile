@@ -228,43 +228,18 @@ rule fastp_se:
 
 rule construct_metagenome:
     input: 
-        directories = expand(f"{GENOME_DIR}/{{assembly}}", assembly=assemblies.species),
-        annotation_bed = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.annotation.bed", assembly=assemblies.species),
-        annotation_gtf = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.annotation.gtf", assembly=assemblies.species),
-        fa = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa", assembly=assemblies.species),
-        fa_fai = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa.fai", assembly=assemblies.species),
-        fa_sizes = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa.sizes", assembly=assemblies.species),
-        gaps_bed = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.gaps.bed", assembly=assemblies.species),
-    output:
-        annotation_bed = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.annotation.bed",
-        annotation_gtf = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.annotation.gtf",
-        fa = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.fa",
-        fa_fai = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.fa.fai",
-        fa_sizes = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.fa.sizes",
-        gaps_bed = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.gaps.bed",
-    shell:
-        """
-        bash scripts/merge_assembly.sh {output.annotation_bed} {input.annotation_bed};
-        bash scripts/merge_assembly.sh {output.annotation_gtf} {input.annotation_gtf};
-        bash scripts/merge_assembly.sh {output.fa} {input.fa};
-        bash scripts/merge_assembly.sh {output.fa_fai} {input.fa_fai};
-        bash scripts/merge_assembly.sh {output.fa_sizes} {input.fa_sizes};
-        bash scripts/merge_assembly.sh {output.gaps_bed} {input.gaps_bed};
-        """
+        directories = expand(GENOME_DIR / "{assembly}/{assembly}.annotation.gtf", assembly=assemblies.species)
+
 
 rule download_assembly:
-    output: 
-        temp(directory(f"{GENOME_DIR}/{{assembly}}/")),
-        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.annotation.gtf",
-        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.annotation.bed",
-        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa",
-        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa.fai",
-        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa.sizes",
-        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.gaps.bed",
+    output: GENOME_DIR / "{assembly}/{assembly}.annotation.gtf",
     params: 
         accession = get_accession,
         assembly = lambda w: w.assembly,
-    log: "run/logs/download_assembly/{{assembly}}.log"
-    wildcard_constraints: assembly = "(?!\/index)"
-    threads: 1
-    shell: f"genomepy install {{params.accession}} -g {GENOME_DIR} -l {{params.assembly}} -t {{threads}} -a > {{log}} 2>&1"
+    log: "run/logs/download_assembly/{assembly}.log",
+    wildcard_constraints: assembly = "(?!/index)",
+    threads: 1,
+    shell: 
+        """
+        genomepy install {params.accession} -g {GENOME_DIR} -l {params.assembly} -t {threads} -a > {log} 2>&1
+        """
