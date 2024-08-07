@@ -16,7 +16,7 @@ def load_assemblies(assembly_file: str) -> pd.DataFrame:
 
 
 def load_samples(sample_file: str, fastq_dir: str) -> pd.DataFrame:
-    _df = pd.read_table(sample_file).set_index("samples", drop=True)
+    _df = pd.read_table(sample_file, comment="#").set_index("samples", drop=True)
     if "alias" not in _df.columns:
         _df["alias"] = _df.index
 
