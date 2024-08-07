@@ -7,22 +7,37 @@ import os
 
 
 def init_workflow(args):
+    # Define the files to be copied
     files = ("assemblies.tsv", "config.yaml", "samples.tsv")
+    
+    # Determine the origin directory (where the script is located) and target directory (current working directory)
     origin = Path(__file__).resolve().parent / "assets"
-    target = Path(os.getcwd())
+    target = Path.cwd()
+    
+    # Iterate over the files and copy each from the origin to the target directory
     for file in files:
         o = origin / file
         t = target / file
-        shutil.copy(o, t)
+        try:
+            shutil.copy(o, t)
+            print(f"Copied {o} to {t}")
+        except FileNotFoundError:
+            print(f"File {o} not found. Skipping.")
+        except Exception as e:
+            print(f"Error copying {o} to {t}: {e}")
 
 
 def run_workflow(args):
+    # Convert args to a dictionary and remove the 'func' key
     args = vars(args)
     del args["func"]
+    
+    # Call snakemake with the provided arguments
     snakemake.snakemake(
         "Snakefile", 
         **args
     )
+
 
 
 if __name__ == "__main__":
