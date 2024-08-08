@@ -1,12 +1,22 @@
 import genomepy
 import pandas as pd
 import argparse
+import time
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from loguru import logger
 from pathlib import Path
 
+FILE_EXTENSIONS = (
+        "annotation.bed",
+        "annotation.gtf",
+        "fa",
+        "fa.fai",
+        "fa.sizes",
+        "gaps.bed"
+    )
+
 def main(assembly_file, outdir, outname, cores, tmp=None):
-    # Check if assembly_file exists
     if not os.path.isfile(assembly_file):
         raise FileNotFoundError(f"The file {assembly_file} does not exist.")
     
@@ -15,7 +25,6 @@ def main(assembly_file, outdir, outname, cores, tmp=None):
 
     # Install all the genomes
     assembly_directories = install_assemblies(assemblies, tmp or outdir, cores)
-    print(f"Assemblies: {assembly_directories}")
     create_metagenome(assembly_directories, outdir, outname)
 
     # Create the new directory in outdir
@@ -36,49 +45,47 @@ def load_assemblies(assembly_file: str) -> pd.DataFrame:
     return _df
 
 
-def install_assemblies(assemblies, working_dir, cores):
-    def install_genome_worker(name, provider, localname, genomes_dir):
-        print(f"Installing: {name} at {genomes_dir}/{localname}")
-        try:
-            genomepy.install_genome(
-                name=name,
-                provider=provider,
-                localname=localname,
-                genomes_dir=genomes_dir,
-                annotation=True,
-                force=True,
-            )
-        except Exception as e:
-            print(f"Exception: {e}")
-
+def install_assemblies(assemblies, working_dir, cores, wait_time=1):
     if not os.path.isdir(working_dir):
         os.makedirs(working_dir)
     print(f"Using: {working_dir}")
 
-    futures = []
     genome_directories = []
-    # Use ThreadPoolExecutor to handle multithreading
-    with ThreadPoolExecutor(max_workers=cores) as executor:
-        for _, row in assemblies.iterrows():
-            # Submit tasks to the thread pool
-            future = executor.submit(
-                install_genome_worker,
-                row["name"],
-                row["provider"],
-                row["species"],
-                working_dir
-            )
-            futures.append(future)
-            genome_directories.append(
-                Path(working_dir) / row["species"]
-            )
+    for _, row in assemblies.iterrows():
+        name = row["name"]
+        provider = row["provider"]
+        localname = row["species"]
+        assembly_directory = Path(working_dir) / localname
+        genome_directories.append(assembly_directory)
 
-        # Wait for all futures to complete
-        for future in as_completed(futures):
-            # Optionally handle exceptions or results here
-            future.result()
+        missing_files = False
+        for extension in FILE_EXTENSIONS:
+            file: Path = assembly_directory / f"{localname}.{extension}"
+            if not file.exists():
+                missing_files = True
+                break
+
+        if not missing_files:
+            continue
+        
+        print(f"Installing: {name} at {assembly_directory}")
+        try:
+            # genomepy.clean()  # Clean before each install because of stupid "provider is offline" exceptions that I haven't been able to catch yet because of the weird design of genomepy.
+            genomepy.install_genome(
+                name = name,
+                provider = provider,
+                localname = localname,
+                genomes_dir = working_dir,
+                annotation = True,
+                threads = cores
+            )
+        except Exception as e:
+            print(e)
+
+        time.sleep(wait_time)
 
     print("Downloaded all genomes.")
+    print(f"Paths used: {genome_directories}")
     return sorted(genome_directories)
 
 
@@ -87,16 +94,7 @@ def create_metagenome(assembly_directories, outdir, genome_name):
     outdir.mkdir(parents=True, exist_ok=True)
     print(f"Making metagenome at: {outdir}")
 
-    file_extensions = (
-        "annotation.bed",
-        "annotation.gtf",
-        "fa",
-        "fa.fai",
-        "fa.sizes",
-        "gaps.bed"
-    )
-
-    for extension in file_extensions:
+    for extension in FILE_EXTENSIONS:
         out_file = outdir / f"{genome_name}.{extension}"
         open(out_file, "w").close()
 
