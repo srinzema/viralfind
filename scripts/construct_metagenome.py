@@ -13,12 +13,9 @@ def main(assembly_file, outdir, outname, cores, tmp=None):
     assemblies = load_assemblies(assembly_file)
     print(assemblies.head())
 
-    tmp = tmp or outdir
-    # Check if tmp directory exists, create if it does not
-
-
     # Install all the genomes
     assembly_directories = install_assemblies(assemblies, tmp or outdir, cores)
+    print(f"Assemblies: {assembly_directories}")
     create_metagenome(assembly_directories, outdir, outname)
 
     # Create the new directory in outdir
@@ -39,19 +36,24 @@ def load_assemblies(assembly_file: str) -> pd.DataFrame:
     return _df
 
 
-def install_assemblies(assemblies, tmp, cores):
+def install_assemblies(assemblies, working_dir, cores):
     def install_genome_worker(name, provider, localname, genomes_dir):
-        # Install a single genome; replace with the actual genomepy call
-        genomepy.install_genome(
-            name=name,
-            provider=provider,
-            localname=localname,
-            genomes_dir=genomes_dir,
-            annotation=True
-        )
+        print(f"Installing: {name} at {genomes_dir}/{localname}")
+        try:
+            genomepy.install_genome(
+                name=name,
+                provider=provider,
+                localname=localname,
+                genomes_dir=genomes_dir,
+                annotation=True,
+                force=True,
+            )
+        except Exception as e:
+            print(f"Exception: {e}")
 
-    if not os.path.isdir(tmp):
-        os.makedirs(tmp)
+    if not os.path.isdir(working_dir):
+        os.makedirs(working_dir)
+    print(f"Using: {working_dir}")
 
     futures = []
     genome_directories = []
@@ -64,11 +66,11 @@ def install_assemblies(assemblies, tmp, cores):
                 row["name"],
                 row["provider"],
                 row["species"],
-                tmp
+                working_dir
             )
             futures.append(future)
             genome_directories.append(
-                Path(tmp) / row["species"]
+                Path(working_dir) / row["species"]
             )
 
         # Wait for all futures to complete
@@ -76,12 +78,14 @@ def install_assemblies(assemblies, tmp, cores):
             # Optionally handle exceptions or results here
             future.result()
 
+    print("Downloaded all genomes.")
     return sorted(genome_directories)
 
 
 def create_metagenome(assembly_directories, outdir, genome_name):
     outdir = Path(outdir) / genome_name
     outdir.mkdir(parents=True, exist_ok=True)
+    print(f"Making metagenome at: {outdir}")
 
     file_extensions = (
         "annotation.bed",
@@ -96,12 +100,13 @@ def create_metagenome(assembly_directories, outdir, genome_name):
         out_file = outdir / f"{genome_name}.{extension}"
         open(out_file, "w").close()
 
+        print(f"Constructing {out_file}")
         for assembly in assembly_directories:
             in_file = assembly / f"{assembly.name}.{extension}"
             append_file_contents(in_file, out_file, assembly.name)
 
 
-def append_file_contents(input_file, output_file, gene_rename):
+def append_file_contents(input_file, output_file, origin_genome):
     """
     Appends the contents of input_file to output_file.
     
@@ -114,7 +119,7 @@ def append_file_contents(input_file, output_file, gene_rename):
             with open(output_file, 'a') as outfile:
                 outfile.write(
                     infile.read().replace(
-                        'gene_id "', f'gene_id "{gene_rename}_'
+                        'gene_id "', f'gene_id "{origin_genome}:'
                     )
                 )
         print(f"Appended contents of {input_file} to {output_file}")

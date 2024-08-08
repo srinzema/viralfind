@@ -4,6 +4,7 @@ import pandas as pd
 
 
 configfile: "config.yaml"
+
 GENOME_DIR = Path(config["genome_dir"])
 FIRST_ASSEBLY_DIR = GENOME_DIR / config["first_assembly"]
 SECOND_ASSEMBLY_DIR = GENOME_DIR / config["second_assembly"] 
@@ -11,7 +12,6 @@ SECOND_ASSEMBLY_DIR = GENOME_DIR / config["second_assembly"]
 samples = utils.load_samples(config["samplesheet"], config["fastq_dir"])
 paired_end = samples[samples["read2"].notnull()]
 single_end = samples[samples["read2"].isna()]
-assemblies = utils.load_assemblies("assemblies.tsv")
 
 # These following functions exist to link wildcards to existing files.
 
@@ -72,7 +72,7 @@ rule summarize_counts:
     params: "-m" if config["merge_replicates"] else ""
     log: "run/logs/summarize_counts.log"
     output: "run/counts/raw_counts.tsv"
-    shell: "python3 scripts/merge_counts.py -o {output} -i {input.counts} -s {input.samplesheet} -f {params} > {log} 2>&1"
+    shell: f"python3 {config['root']}/scripts/merge_counts.py -o {{output}} -i {{input.counts}} -s {{input.samplesheet}} -f {{params}} > {{log}} 2>&1"
 
 
 rule featurecounts:
@@ -227,19 +227,12 @@ rule fastp_se:
 # Rules for constructing a metagenome to map all unmapped reads against
 
 rule construct_metagenome:
-    input: 
-        directories = expand(GENOME_DIR / "{assembly}/{assembly}.annotation.gtf", assembly=assemblies.species)
-
-
-rule download_assembly:
-    output: GENOME_DIR / "{assembly}/{assembly}.annotation.gtf",
-    params: 
-        accession = get_accession,
-        assembly = lambda w: w.assembly,
-    log: "run/logs/download_assembly/{assembly}.log",
-    wildcard_constraints: assembly = "(?!/index)",
-    threads: 1,
-    shell: 
-        """
-        genomepy install {params.accession} -g {GENOME_DIR} -l {params.assembly} -t {threads} -a > {log} 2>&1
-        """
+    input: config["assembly_file"]
+    output:
+        outdir = directory(SECOND_ASSEMBLY_DIR / config["second_assembly"]),
+        fa = SECOND_ASSEMBLY_DIR / f"{config['second_assembly']}.fa",
+        annotation_gtf = SECOND_ASSEMBLY_DIR / f"{config['second_assembly']}.annotation.gtf"
+    log: f"run/logs/construct_metagenome/{config['second_assembly']}.log"
+    threads: 8
+    params: config["first_assembly"]
+    shell: f"python3 {config['root']}/scripts/construct_metagenome.py {{input}} {{output.outdir}} {{params}} --cores {{threads}} > {{log}} 2>&1"
