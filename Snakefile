@@ -229,10 +229,19 @@ rule fastp_se:
 rule construct_metagenome:
     input: config["assembly_file"]
     output:
-        outdir = directory(SECOND_ASSEMBLY_DIR / config["second_assembly"]),
+        outdir = directory(SECOND_ASSEMBLY_DIR),
         fa = SECOND_ASSEMBLY_DIR / f"{config['second_assembly']}.fa",
         annotation_gtf = SECOND_ASSEMBLY_DIR / f"{config['second_assembly']}.annotation.gtf"
     log: f"run/logs/construct_metagenome/{config['second_assembly']}.log"
     threads: 8
-    params: config["first_assembly"]
-    shell: f"python3 {config['root']}/scripts/construct_metagenome.py {{input}} {{output.outdir}} {{params}} --cores {{threads}} > {{log}} 2>&1"
+    params: 
+        outdir = GENOME_DIR,
+        outname = config["second_assembly"]
+    shell: 
+        f"""
+        python3 {config['root']}/scripts/construct_metagenome.py \
+        {{input}} \
+        {{params.outdir}} \
+        {{params.outname}} \
+        --cores {{threads}} > {{log}} 2>&1
+        """
