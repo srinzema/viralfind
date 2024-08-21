@@ -4,6 +4,7 @@ import pandas as pd
 
 
 configfile: "config.yaml"
+
 GENOME_DIR = Path(config["genome_dir"])
 FIRST_ASSEBLY_DIR = GENOME_DIR / config["first_assembly"]
 SECOND_ASSEMBLY_DIR = GENOME_DIR / config["second_assembly"] 
@@ -11,51 +12,71 @@ SECOND_ASSEMBLY_DIR = GENOME_DIR / config["second_assembly"]
 samples = utils.load_samples(config["samplesheet"], config["fastq_dir"])
 paired_end = samples[samples["read2"].notnull()]
 single_end = samples[samples["read2"].isna()]
-assemblies = utils.load_assemblies("assemblies.tsv")
 
+# These following functions exist to link wildcards to existing files.
 
 def get_unmapped_reads(wildcards):
     sample_info = samples.loc[samples["alias"] == wildcards.sample].iloc[0]
     if pd.isna(sample_info["read2"]): # SE sample
         return [f"run/unmapped/{wildcards.sample}.unmapped.fastq.gz"]
-    return [f"run/unmapped/{wildcards.sample}_R1.unmapped.fastq.gz", f"run/unmapped/{wildcards.sample}_R2.unmapped.fastq.gz"]
+    return [
+        f"run/unmapped/{wildcards.sample}_R1.unmapped.fastq.gz", 
+        f"run/unmapped/{wildcards.sample}_R2.unmapped.fastq.gz"
+    ]
 
 
 def get_trimmed_reads(wildcards):
     sample_info = samples.loc[samples["alias"] == wildcards.sample].iloc[0]
     if pd.isna(sample_info["read2"]): # SE sample
         return [f"run/trimmed/{wildcards.sample}.trimmed.fastq.gz"]
-    return [f"run/trimmed/{wildcards.sample}_R1.trimmed.fastq.gz", f"run/trimmed/{wildcards.sample}_R2.trimmed.fastq.gz"]
+    return [
+        f"run/trimmed/{wildcards.sample}_R1.trimmed.fastq.gz",
+        f"run/trimmed/{wildcards.sample}_R2.trimmed.fastq.gz"
+    ]
 
 
 def original_read_1(wildcards):
+    "Gets the first fastq for FASTP."
     alias = wildcards.sample
     sample_info = samples.loc[samples["alias"] == alias]
     return sample_info.read1.iloc[0]
 
 
 def original_read_2(wildcards):
+    "Gets the second fastq for FASTP, not used for paired end samples."
     alias = wildcards.sample
     sample_info = samples.loc[samples["alias"] == alias]
     return sample_info.read2.iloc[0]
 
 
+def get_accession(wildcards):
+    row = assemblies.loc[assemblies["species"] == wildcards.assembly]
+    accession = row["name"].iloc[0]
+    return accession
+
+
 rule all:
+    """
+    This rule depends on the raw_counts.tsv table, 
+    which is depends on all other rules.
+    """
     input:
         "run/counts/raw_counts.tsv"
 
 
 rule summarize_counts:
+    "Merge the counts of all samples into a single count table."
     input: 
         counts = expand("run/counts/per_sample/{sample}.tsv", sample=samples.alias),
         samplesheet = config["samplesheet"]
     params: "-m" if config["merge_replicates"] else ""
     log: "run/logs/summarize_counts.log"
     output: "run/counts/raw_counts.tsv"
-    shell: "python3 scripts/merge_counts.py -o {output} -i {input.counts} -s {input.samplesheet} -f {params} > {log} 2>&1"
+    shell: f"python3 {config['root']}/scripts/merge_counts.py -o {{output}} -i {{input.counts}} -s {{input.samplesheet}} -f {{params}} > {{log}} 2>&1"
 
 
 rule featurecounts:
+    "Run feature counts on the BAM resulting from the second pass."
     input: 
         bam = "run/alignment/second_pass/{sample}_Aligned.out.bam",
         gtf = SECOND_ASSEMBLY_DIR / (config["second_assembly"] + ".annotation.gtf")
@@ -68,8 +89,10 @@ rule featurecounts:
         featureCounts -a {input.gtf} {input.bam} {params.paired_end} -T {threads} -o {output} > {log} 2>&1
         """
 
+# Below are all rules related to mapping
 
 rule bam2fastq_pe:
+    "Converts the unmapped reads into two paired end fastq files."
     input: "run/unmapped/{sample}.unmapped.sorted.bam"
     output: 
         read1 = "run/unmapped/{sample}_R1.unmapped.fastq.gz",
@@ -85,6 +108,7 @@ rule bam2fastq_pe:
 
 
 rule bam2fastq_se:
+    "Converts the unmapped reads into a single end fastq file."
     input: "run/unmapped/{sample}.unmapped.sorted.bam"
     output: "run/unmapped/{sample}.unmapped.fastq.gz"
     log: "run/logs/bam2fastq/{sample}.log"
@@ -92,11 +116,12 @@ rule bam2fastq_se:
     shell:
         """
         samtools fastq -@ {threads} {input} \
-        -o {ouput} -0 /dev/null -s /dev/null -n > {log} 2>&1
+        -o {output} -0 /dev/null -s /dev/null -n > {log} 2>&1
         """
 
 
 rule sort_unmapped:
+    "Sorts all unmapped reads."
     input: "run/unmapped/{sample}.unmapped.bam"
     output: temp("run/unmapped/{sample}.unmapped.sorted.bam")
     log: "run/logs/sort_unmapped/{sample}.log"
@@ -104,6 +129,7 @@ rule sort_unmapped:
 
 
 rule extract_unmapped:
+    "Extract all unmapped reads from the first pass into temporary BAM file."
     input: "run/alignment/first_pass/{sample}_Aligned.out.bam"
     output: temp("run/unmapped/{sample}.unmapped.bam")
     log: "run/logs/extract_unmapped/{sample}.log"
@@ -111,6 +137,9 @@ rule extract_unmapped:
 
 
 rule star_sp:
+    """
+    Second pass of STAR, maps all unmapped reads against a custom metagenome.
+    """
     input:
         index = SECOND_ASSEMBLY_DIR / "index",
         reads = get_unmapped_reads
@@ -127,8 +156,12 @@ rule star_sp:
         --outFileNamePrefix {params} > {log} 2>&1
         """
 
-# Misschien outFilterMismatchNmax=<10 ?
+
 rule star_fp:
+    """
+    First pass of STAR, runs against the first assembly.
+    All unmapped reads are kept in the resulting BAM file.
+    """
     input:
         index = FIRST_ASSEBLY_DIR / "index",
         reads = get_trimmed_reads
@@ -144,10 +177,10 @@ rule star_fp:
         --outSAMunmapped Within --outSAMtype BAM Unsorted \
         --outFileNamePrefix {params} > {log} 2>&1
         """
-                # --outFilterMultimapNmax 1 \
 
 
 rule star_build_index:
+    "Build index rule"
     input:
         fa = f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa",
         annotation_gtf = f"{GENOME_DIR}/{{assembly}}/{{assembly}}.annotation.gtf",
@@ -161,13 +194,12 @@ rule star_build_index:
         --genomeFastaFiles {input.fa} --sjdbGTFfile {input.annotation_gtf} > {log} 2>&1
         """
 
+# Fastp rules
 
 rule fastp_pe:
     input:
         read1 = original_read_1,
         read2 = original_read_2,
-        # read1 = Path(config["fastq_dir"]) / "{sample}_R1.fastq.gz",
-        # read2 = Path(config["fastq_dir"]) / "{sample}_R2.fastq.gz"
     output:
         json="run/qc/fastp/{sample}.json",
         html="run/qc/fastp/{sample}.html",
@@ -186,58 +218,30 @@ rule fastp_se:
         html = "run/qc/fastp/{sample}.html",
         out = "run/trimmed/{sample}.trimmed.fastq.gz"
     log: "run/logs/fastp/{sample}.log"
-    wildcard_constraints: sample = "(?!.*_R\d)"
+    # wildcard_constraints: sample = "(?!.*_R\d)"
     threads: 2
     shell:
         "fastp -w {threads} --in1 {input} --out1 {output.out} -h {output.html} -j {output.json} > {log} 2>&1"
 
 
+# Rules for constructing a metagenome to map all unmapped reads against
+
 rule construct_metagenome:
-    input: 
-        directories = expand(f"{GENOME_DIR}/{{assembly}}", assembly=assemblies.species),
-        annotation_bed = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.annotation.bed", assembly=assemblies.species),
-        annotation_gtf = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.annotation.gtf", assembly=assemblies.species),
-        fa = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa", assembly=assemblies.species),
-        fa_fai = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa.fai", assembly=assemblies.species),
-        fa_sizes = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa.sizes", assembly=assemblies.species),
-        gaps_bed = expand(f"{GENOME_DIR}/{{assembly}}/{{assembly}}.gaps.bed", assembly=assemblies.species),
+    input: config["assembly_file"]
     output:
-        annotation_bed = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.annotation.bed",
-        annotation_gtf = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.annotation.gtf",
-        fa = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.fa",
-        fa_fai = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.fa.fai",
-        fa_sizes = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.fa.sizes",
-        gaps_bed = f"{SECOND_ASSEMBLY_DIR}/{config['second_assembly']}.gaps.bed",
-    shell:
-        """
-        bash scripts/merge_assembly.sh {output.annotation_bed} {input.annotation_bed};
-        bash scripts/merge_assembly.sh {output.annotation_gtf} {input.annotation_gtf};
-        bash scripts/merge_assembly.sh {output.fa} {input.fa};
-        bash scripts/merge_assembly.sh {output.fa_fai} {input.fa_fai};
-        bash scripts/merge_assembly.sh {output.fa_sizes} {input.fa_sizes};
-        bash scripts/merge_assembly.sh {output.gaps_bed} {input.gaps_bed};
-        """
-
-
-def get_accession(wildcards):
-    row = assemblies.loc[assemblies["species"] == wildcards.assembly]
-    accession = row["name"].iloc[0]
-    return accession
-
-
-rule download_assembly:
-    output: 
-        temp(directory(f"{GENOME_DIR}/{{assembly}}/")),
-        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.annotation.gtf",
-        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.annotation.bed",
-        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa",
-        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa.fai",
-        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.fa.sizes",
-        f"{GENOME_DIR}/{{assembly}}/{{assembly}}.gaps.bed",
+        outdir = directory(SECOND_ASSEMBLY_DIR),
+        fa = SECOND_ASSEMBLY_DIR / f"{config['second_assembly']}.fa",
+        annotation_gtf = SECOND_ASSEMBLY_DIR / f"{config['second_assembly']}.annotation.gtf"
+    log: f"run/logs/construct_metagenome/{config['second_assembly']}.log"
+    threads: 8
     params: 
-        accession = get_accession,
-        assembly = lambda w: w.assembly,
-    log: "run/logs/download_assembly/{{assembly}}.log"
-    wildcard_constraints: assembly = "(?!\/index)"
-    threads: 1
-    shell: f"genomepy install {{params.accession}} -g {GENOME_DIR} -l {{params.assembly}} -t {{threads}} -a > {{log}} 2>&1"
+        outdir = GENOME_DIR,
+        outname = config["second_assembly"]
+    shell: 
+        f"""
+        python3 {config['root']}/scripts/construct_metagenome.py \
+        {{input}} \
+        {{params.outdir}} \
+        {{params.outname}} \
+        --cores {{threads}} > {{log}} 2>&1
+        """

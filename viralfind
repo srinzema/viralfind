@@ -1,0 +1,89 @@
+#!/usr/bin/env python
+from pathlib import Path
+import snakemake
+import argparse
+import shutil
+import os
+
+ROOT = Path(__file__).resolve().parent
+
+def init_workflow(args):
+    # Define the files to be copied
+    files = ("assemblies.tsv", "config.yaml", "samples.tsv")
+    
+    # Determine the origin directory (where the script is located) and target directory (current working directory)
+    origin = ROOT / "assets"
+    target = Path.cwd()
+    
+    # Iterate over the files and copy each from the origin to the target directory
+    for file in files:
+        o = origin / file
+        t = target / file
+        try:
+            shutil.copy(o, t)
+            print(f"Copied {o} to {t}")
+        except FileNotFoundError:
+            print(f"File {file} not found. Skipping.")
+        except Exception as e:
+            print(f"Error copying {o} to {t}: {e}")
+
+
+def run_workflow(args):
+    # Convert args to a dictionary and remove the 'func' key
+    args = vars(args)
+    del args["func"]
+    
+    # Call snakemake with the provided arguments
+    snakemake.snakemake(
+        ROOT / "Snakefile",
+        config = {"root": ROOT},
+        **args
+    )
+
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    subparsers = parser.add_subparsers(help="Choose init or run.")
+
+    # Init parser
+    init_parser = subparsers.add_parser("init", help="Initialize the pipeline in the current directory.")
+    init_parser.set_defaults(func=init_workflow)
+
+    # Run parser
+    run_parser = subparsers.add_parser("run", help="Runs the pipeline in the current working directory.")
+    run_parser.set_defaults(func=run_workflow)
+
+    # Add the --dry-run (or -n) argument
+    run_parser.add_argument(
+        "--dry-run",
+        "-n",
+        dest="dryrun",
+        action="store_true",
+        help="If specified, runs the script in dry-run mode (do not actually execute actions).",
+    )
+
+    # force_incomplete
+    run_parser.add_argument(
+        "--rerun-incomplete",
+        "--ri",
+        dest="force_incomplete",
+        action="store_true",
+        help="Re-run all jobs the output of which is recognized as incomplete.",
+    )
+
+    # Add the --cores (or -c) argument
+    run_parser.add_argument(
+        "--cores",
+        "-c",
+        dest="cores",
+        type=int,
+        default=1,
+        help="Number of cores to use (default is 1).",
+    )
+
+    args = parser.parse_args()
+    if hasattr(args, "func"):
+        args.func(args)
+    else:
+        parser.print_help()
