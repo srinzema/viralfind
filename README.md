@@ -1,4 +1,27 @@
+# Viral Find
+
 This workflow is my attempt at modernizing, and generalizing existing viral infection detection pipelines. Using snakemake to implement computational scaling and parallelisation of analysis tasks.
+
+## Setup
+
+Clone the repository
+
+```bash
+cd <installation directory> # Git clone makes a subdirectory with the name of the repository
+git clone git@github.com:srinzema/dna_methylation.git
+cd dna_methylation
+```
+
+Recreate and activate the environment.
+```bash
+conda env create -f environment.yml
+conda activate viralfind
+```
+
+Prepend the installation path to your environment path
+```bash
+export PATH="$(pwd)":$PATH
+```
 
 ## Basic usage
 This pipeline consists of two seperate workflows: *init* and *run*, where *init* initializes files needed for the pipeline in the current working directory. After filling out the resulting files *run* can be called to start the pipeline.
