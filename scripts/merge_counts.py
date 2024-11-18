@@ -12,7 +12,9 @@ parser.add_argument("-i", "--input", nargs="+", default=[])
 args = parser.parse_args()
 
 
-samplesheet = pd.read_table(args.samplesheet).set_index("samples", drop=True)
+samplesheet = pd.read_table(args.samplesheet, comment="#").set_index(
+    "samples", drop=True
+)
 if "alias" not in samplesheet.columns:
     samplesheet["alias"] = samplesheet.index
 out_file = args.out
