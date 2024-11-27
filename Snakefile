@@ -12,6 +12,7 @@ SECOND_ASSEMBLY_DIR = GENOME_DIR / config["second_assembly"]
 samples = utils.load_samples(config["samplesheet"], config["fastq_dir"])
 paired_end = samples[samples["read2"].notnull()]
 single_end = samples[samples["read2"].isna()]
+single_end_alias_list = list(single_end.alias)
 
 # These following functions exist to link wildcards to existing files.
 
@@ -63,7 +64,6 @@ rule all:
     input:
         "run/counts/raw_counts.tsv"
 
-
 rule summarize_counts:
     "Merge the counts of all samples into a single count table."
     input: 
@@ -81,7 +81,8 @@ rule featurecounts:
         bam = "run/alignment/second_pass/{sample}_Aligned.out.bam",
         gtf = SECOND_ASSEMBLY_DIR / (config["second_assembly"] + ".annotation.gtf")
     output: "run/counts/per_sample/{sample}.tsv"
-    params: paired_end = lambda wildcards: "" if wildcards.sample in single_end.alias else "-p"
+    params: 
+        paired_end = lambda wildcards: "" if wildcards.sample in single_end_alias_list else "-p"
     log: "run/logs/featurecounts/{sample}.log"
     threads: 4
     shell:
