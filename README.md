@@ -8,7 +8,7 @@ Clone the repository
 
 ```bash
 cd <installation directory> # Git clone makes a subdirectory with the name of the repository
-git clone git@github.com:srinzema/dna_methylation.git
+git clone git@github.com:srinzema/viralfind.git
 cd dna_methylation
 ```
 
